@@ -16,6 +16,14 @@ public:
 
   void add_item(int value, int amount) {
     struct item new_item;
+
+    for (int i = 0; i < count; i++) {
+      if (value == array[i].value) {
+        array->amount += amount;
+        return;
+      }
+    }
+
     new_item.value = value;
     new_item.amount = amount;
     array[count] = new_item;
@@ -32,6 +40,7 @@ public:
 
 int main() {
   Storage myst;
+  myst.add_item(2, 3);
   myst.add_item(2, 3);
   myst.print_members();
   return 0;
