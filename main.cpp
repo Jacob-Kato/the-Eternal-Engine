@@ -26,20 +26,21 @@ public:
     struct item new_item;
 
     if (count == size) {
-      struct item *temp;
-      temp = (struct item *)realloc(temp, 2 * sizeof(struct item));
+      struct item *temp =
+          (struct item *)realloc(array, 2 * sizeof(struct item));
       if (temp == NULL) {
         std::cout << "Cound not Reallocate Array !!" << "\n";
+        free(array);
         return;
       }
       array = temp;
       size *= 2;
-      free(temp);
     }
 
     for (int i = 0; i < count; i++) {
       if (value == array[i].value) {
         array->amount += amount;
+        count++;
         return;
       }
     }
@@ -62,7 +63,7 @@ int main() {
   Storage myst;
   myst.add_item(2, 3);
   myst.add_item(2, 3);
-  myst.add_item(6, 3);
+  myst.add_item(88, 1);
   myst.print_members();
   return 0;
 }
