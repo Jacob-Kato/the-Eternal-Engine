@@ -22,9 +22,13 @@ public:
     }
   };
 
+  // add item will add a new item to the array
+  // it will aslo check if there a dup if there is it adds to the values amount
+  // it will also check if it is at max capcity
+
   void add_item(int value, int amount) {
     struct item new_item;
-
+    // check if the array is full
     if (count == size) {
       struct item *temp =
           (struct item *)realloc(array, 2 * sizeof(struct item));
@@ -36,7 +40,7 @@ public:
       array = temp;
       size *= 2;
     }
-
+    // check if theres a dup
     for (int i = 0; i < count; i++) {
       if (value == array[i].value) {
         array->amount += amount;
@@ -49,6 +53,7 @@ public:
     array[count] = new_item;
     count++;
   }
+
   void print_members() {
     for (int i = 0; i < count; i++) {
       std::cout << "Value: " << array->value << "\n";
