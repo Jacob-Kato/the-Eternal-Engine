@@ -53,7 +53,21 @@ public:
     array[count] = new_item;
     count++;
   }
-
+  // remove
+  // it should leave no gaps when removing
+  void remove_item(int value, int amount = 1) {
+    for (int i = 0; i < count; i++) {
+      if (value == array[i].value) {
+        if (array[i].amount > amount) {
+          array[i].amount -= amount;
+          count -= 1;
+        } else {
+          array[i] = array[count];
+          count -= 1;
+        }
+      }
+    }
+  }
   void print_members() {
     std::cout << "--Item List--" << "\n";
     for (int i = 0; i < count; i++) {
@@ -72,11 +86,11 @@ public:
 
 int main() {
   Storage myst;
+  myst.add_item(99, 6);
   myst.print_system_info();
-  myst.add_item(2, 3);
-  myst.print_system_info();
-  myst.add_item(66, 3);
   myst.print_members();
+  myst.remove_item(99, 3);
   myst.print_system_info();
+  myst.print_members();
   return 0;
 }
