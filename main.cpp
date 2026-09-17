@@ -43,7 +43,7 @@ public:
     // check if theres a dup
     for (int i = 0; i < count; i++) {
       if (value == array[i].value) {
-        array->amount += amount;
+        array[i].amount += amount;
         count++;
         return;
       }
@@ -55,21 +55,28 @@ public:
   }
 
   void print_members() {
+    std::cout << "--Item List--" << "\n";
     for (int i = 0; i < count; i++) {
       std::cout << "Value: " << array[i].value << "\n";
       std::cout << "Amount: " << array[i].amount << "\n";
-      std::cout << "Storage left: " << size - count << "\n";
       std::cout << "\n";
     }
+  }
+  void print_system_info() {
+    std::cout << "--System Info--" << "\n";
+    std::cout << "Size: " << size << "\n";
+    std::cout << "Item count: " << count << "\n";
+    std::cout << "\n";
   }
 };
 
 int main() {
   Storage myst;
+  myst.print_system_info();
   myst.add_item(2, 3);
+  myst.print_system_info();
+  myst.add_item(66, 3);
   myst.print_members();
-  myst.add_item(2, 3);
-  myst.print_members();
-  myst.add_item(88, 1);
+  myst.print_system_info();
   return 0;
 }
