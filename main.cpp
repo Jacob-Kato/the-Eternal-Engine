@@ -56,8 +56,8 @@ public:
 
   void print_members() {
     for (int i = 0; i < count; i++) {
-      std::cout << "Value: " << array->value << "\n";
-      std::cout << "Amount: " << array->amount << "\n";
+      std::cout << "Value: " << array[i].value << "\n";
+      std::cout << "Amount: " << array[i].amount << "\n";
       std::cout << "Storage left: " << size - count << "\n";
       std::cout << "\n";
     }
