@@ -62,8 +62,9 @@ public:
 int main() {
   Storage myst;
   myst.add_item(2, 3);
-  myst.add_item(2, 3);
-  myst.add_item(88, 1);
   myst.print_members();
+  myst.add_item(2, 3);
+  myst.print_members();
+  myst.add_item(88, 1);
   return 0;
 }
